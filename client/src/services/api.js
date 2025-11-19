@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://final-plp-project.onrender.com';
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: API_BASE_URL,  // ← FIXED: Changed API_URL to API_BASE_URL
   headers: {
     'Content-Type': 'application/json'
   }
