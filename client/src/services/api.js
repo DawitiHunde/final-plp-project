@@ -21,7 +21,8 @@ api.interceptors.request.use(
 );
 
 export const userService = {
-  register: (userData) => api.post('/users/register', userData),
+  register: (userData) => api.post('/api/users/register', userData),
+
   login: (credentials) => api.post('/users/login', credentials),
   getProfile: () => api.get('/users/profile'),
   updateProfile: (userData) => api.put('/users/profile', userData)
