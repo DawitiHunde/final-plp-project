@@ -20,7 +20,21 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/', limiter);
 
+// Add this route - Main API endpoint
+app.get('/api', (req, res) => {
+  res.json({ 
+    message: 'MERN API is running successfully!',
+    version: '1.0',
+    endpoints: {
+      users: '/api/users',
+      auth: '/api/users/login & /api/users/register',
+      // add other endpoints you have
+    }
+  });
+});
+
 // Routes
+
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/courses', require('./routes/courseRoutes'));
 app.use('/api/enrollments', require('./routes/enrollmentRoutes'));
