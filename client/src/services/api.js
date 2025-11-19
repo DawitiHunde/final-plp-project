@@ -1,7 +1,8 @@
 import axios from 'axios';
-const API_BASE_URL = (process.env.REACT_APP_API_URL || 'https://final-plp-project.onrender.com') + '/api';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://final-plp-project.onrender.com';
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: API_BASE_URL + '/api',  // Add /api here ONLY
   headers: {
     'Content-Type': 'application/json'
   }
@@ -20,50 +21,50 @@ api.interceptors.request.use(
 );
 
 export const userService = {
-  register: (userData) => api.post('/api/users/register', userData),
-  login: (credentials) => api.post('/api/users/login', credentials),
-  getProfile: () => api.get('/api/users/profile'),
-  updateProfile: (userData) => api.put('/api/users/profile', userData)
+  register: (userData) => api.post('/users/register', userData),  // Remove /api
+  login: (credentials) => api.post('/users/login', credentials),  // Remove /api
+  getProfile: () => api.get('/users/profile'),  // Remove /api
+  updateProfile: (userData) => api.put('/users/profile', userData)  // Remove /api
 };
 
 export const courseService = {
-  getAllCourses: () => api.get('/api/courses'),
-  getCourse: (id) => api.get(`/api/courses/${id}`),
-  createCourse: (courseData) => api.post('/api/courses', courseData),
-  updateCourse: (id, courseData) => api.put(`/api/courses/${id}`, courseData),
-  deleteCourse: (id) => api.delete(`/api/courses/${id}`),
-  getTeacherCourses: () => api.get('/api/courses/teacher/my-courses')
+  getAllCourses: () => api.get('/courses'),  // Remove /api
+  getCourse: (id) => api.get(`/courses/${id}`),  // Remove /api
+  createCourse: (courseData) => api.post('/courses', courseData),  // Remove /api
+  updateCourse: (id, courseData) => api.put(`/courses/${id}`, courseData),  // Remove /api
+  deleteCourse: (id) => api.delete(`/courses/${id}`),  // Remove /api
+  getTeacherCourses: () => api.get('/courses/teacher/my-courses')  // Remove /api
 };
 
 export const enrollmentService = {
-  enroll: (courseId) => api.post('/api/enrollments', { courseId }),
-  getMyEnrollments: () => api.get('/api/enrollments/my-courses'),
-  unenroll: (courseId) => api.delete(`/api/enrollments/${courseId}`)
+  enroll: (courseId) => api.post('/enrollments', { courseId }),  // Remove /api
+  getMyEnrollments: () => api.get('/enrollments/my-courses'),  // Remove /api
+  unenroll: (courseId) => api.delete(`/enrollments/${courseId}`)  // Remove /api
 };
 
 export const lessonService = {
-  createLesson: (lessonData) => api.post('/api/lessons', lessonData),
-  getCourseLessons: (courseId) => api.get(`/api/lessons/course/${courseId}`),
-  getLesson: (id) => api.get(`/api/lessons/${id}`),
-  updateLesson: (id, lessonData) => api.put(`/api/lessons/${id}`, lessonData),
-  deleteLesson: (id) => api.delete(`/api/lessons/${id}`)
+  createLesson: (lessonData) => api.post('/lessons', lessonData),  // Remove /api
+  getCourseLessons: (courseId) => api.get(`/lessons/course/${courseId}`),  // Remove /api
+  getLesson: (id) => api.get(`/lessons/${id}`),  // Remove /api
+  updateLesson: (id, lessonData) => api.put(`/lessons/${id}`, lessonData),  // Remove /api
+  deleteLesson: (id) => api.delete(`/lessons/${id}`)  // Remove /api
 };
 
 export const progressService = {
-  markComplete: (courseId, lessonId) => api.post('/api/progress/complete', { courseId, lessonId }),
-  getCourseProgress: (courseId) => api.get(`/api/progress/course/${courseId}`)
+  markComplete: (courseId, lessonId) => api.post('/progress/complete', { courseId, lessonId }),  // Remove /api
+  getCourseProgress: (courseId) => api.get(`/progress/course/${courseId}`)  // Remove /api
 };
 
 export const discussionService = {
-  createQuestion: (courseId, question) => api.post('/api/discussions', { courseId, question }),
-  getCourseDiscussions: (courseId) => api.get(`/api/discussions/course/${courseId}`),
-  addAnswer: (discussionId, answer) => api.post(`/api/discussions/${discussionId}/answer`, { answer })
+  createQuestion: (courseId, question) => api.post('/discussions', { courseId, question }),  // Remove /api
+  getCourseDiscussions: (courseId) => api.get(`/discussions/course/${courseId}`),  // Remove /api
+  addAnswer: (discussionId, answer) => api.post(`/discussions/${discussionId}/answer`, { answer })  // Remove /api
 };
 
 export const gradeService = {
-  assignGrade: (gradeData) => api.post('/api/grades', gradeData),
-  getCourseGrades: (courseId) => api.get(`/api/grades/course/${courseId}`),
-  getMyGrades: () => api.get('/api/grades/my-grades')
+  assignGrade: (gradeData) => api.post('/grades', gradeData),  // Remove /api
+  getCourseGrades: (courseId) => api.get(`/grades/course/${courseId}`),  // Remove /api
+  getMyGrades: () => api.get('/grades/my-grades')  // Remove /api
 };
 
 export default api;
