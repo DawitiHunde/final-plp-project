@@ -105,7 +105,9 @@ This project directly supports **UN Sustainable Development Goal 4: Quality Educ
 ├── server.js                  # Express server
 └── .env                       # Environment variables
 ```
-
+URL
+My frontend url = https://edu-tech-africa.netlify.app/
+My backend url = https://final-plp-project.onrender.com
 ## Setup Instructions
 
 ### Backend Setup
