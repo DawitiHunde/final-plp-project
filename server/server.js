@@ -67,6 +67,15 @@ app.get('/api/lessons', (req, res) => {
     note: 'This is a placeholder - implement your lesson logic'
   });
 });
+// CORS configuration - ADD THIS if missing
+app.use(cors({
+  origin: [
+    'https://edu-tech-africa.netlify.app/', // You'll update this after deployment
+    'http://localhost:3000',
+    
+  ],
+  credentials: true
+}));
 
 // YOUR EXISTING ROUTE MOUNTS (keep these)
 app.use('/api/users', require('./routes/userRoutes'));
