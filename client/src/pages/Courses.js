@@ -18,11 +18,29 @@ function Courses() {
   const fetchCourses = async () => {
     try {
       const response = await courseService.getAllCourses();
-      setCourses(response.data);
+      
+      // Debug: Check what the API actually returns
+      console.log('API Response:', response);
+      console.log('Response data:', response.data);
+      
+      // Handle different response formats
+      if (Array.isArray(response.data)) {
+        setCourses(response.data);
+      } else if (response.data && Array.isArray(response.data.courses)) {
+        setCourses(response.data.courses); // If it's { courses: [] }
+      } else if (response.data && Array.isArray(response.data.data)) {
+        setCourses(response.data.data); // If it's { data: [] }
+      } else {
+        console.error('Unexpected API response format:', response.data);
+        setCourses([]); // Set empty array as fallback
+      }
+      
       setLoading(false);
     } catch (err) {
+      console.error('Error fetching courses:', err);
       setError('Failed to fetch courses');
       setLoading(false);
+      setCourses([]); // Ensure courses is always an array
     }
   };
 
@@ -74,7 +92,7 @@ function Courses() {
         </p>
       </div>
 
-      {courses.length === 0 ? (
+      {!Array.isArray(courses) || courses.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-xl text-gray-600 dark:text-gray-400">
             No courses available yet. Check back soon!
