@@ -5,6 +5,19 @@ const generateToken = require('../utils/generateToken');
 const { protect } = require('../middleware/auth');
 const { validateEmail, validatePassword } = require('../middleware/validation');
 
+// ADD THIS ROUTE - Get all users
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find().select('-password');
+    res.json({
+      message: 'Users retrieved successfully',
+      users: users
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
 // Register user
 router.post('/register', validateEmail, validatePassword, async (req, res) => {
   try {
