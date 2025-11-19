@@ -117,3 +117,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Add this to your backend to prevent sleeping
+setInterval(() => {
+  console.log('Keeping service awake...');
+}, 300000); // Ping every 5 minutes
