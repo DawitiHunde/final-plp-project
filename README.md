@@ -1,5 +1,9 @@
 # EduLearn Platform - MERN Stack Education System
 
+My frontend url = https://edu-tech-africa.netlify.app/
+My backend url = https://final-plp-project.onrender.com
+ppt link = https://gamma.app/docs/EduLearn-Platform-MERN-Stack-Education-System-mdqqn2ajniztls9
+
 A comprehensive, modern education management platform built with the MERN stack (MongoDB, Express.js, React, Node.js), supporting UN Sustainable Development Goal 4: Quality Education.
 
 ## 🌍 Project Overview
@@ -106,8 +110,7 @@ This project directly supports **UN Sustainable Development Goal 4: Quality Educ
 └── .env                       # Environment variables
 ```
 URL
-My frontend url = https://edu-tech-africa.netlify.app/
-My backend url = https://final-plp-project.onrender.com
+
 ## Setup Instructions
 
 ### Backend Setup
@@ -126,8 +129,7 @@ npm install
 npm run dev
 ```
 
-Server runs on http://localhost:5000
-
+Server runs on http://localhost:50
 ### Frontend Setup
 
 1. Navigate to client folder:
